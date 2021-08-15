@@ -1,14 +1,14 @@
 {
   "name": "@joshxyzhimself/undici2",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@joshxyzhimself/assert": "^0.0.1",
+    "@joshxyzhimself/assert": "^0.0.0",
     "multi-part": "^3.0.0",
     "undici": "^4.4.2"
   },
   "devDependencies": {
-    "@joshxyzhimself/uwu": "^0.0.1"
+    "@joshxyzhimself/uwu": "^0.0.0"
   }
 }
