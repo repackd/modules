@@ -25,18 +25,22 @@ const get_response_body = (response) => new Promise((resolve, reject) => {
     buffer_chunks.push(buffer_chunk);
   });
   response.body.on('end', async () => {
+    let json = null;
+    let string = null;
     let buffer = buffer_chunks.length > 0 ? Buffer.concat(buffer_chunks) : null;
+    let compressed_buffer = null;
 
     const content_encoding = response.headers['content-encoding'];
     if (typeof content_encoding === 'string') {
       if (content_encoding.includes('gzip') === true) {
+        compressed_buffer = buffer;
         buffer = await async_gunzip(buffer);
       } else if (content_encoding.includes('br') === true) {
+        compressed_buffer = buffer;
         buffer = await async_brotli_decompress(buffer);
       }
     }
 
-    const response_body = { json: null, string: null, buffer };
 
     if (buffer instanceof Buffer) {
       const content_type = response.headers['content-type'];
@@ -50,11 +54,11 @@ const get_response_body = (response) => new Promise((resolve, reject) => {
           || content_type.includes('application/json') === true
           || content_type.includes('application/javascript') === true
         ) {
-          response_body.string = buffer.toString('utf-8');
+          string = buffer.toString('utf-8');
         }
         if (content_type.includes('application/json') === true) {
           try {
-            response_body.json = JSON.parse(response_body.string);
+            json = JSON.parse(string);
           } catch (e) {
             reject(e);
             return;
@@ -62,6 +66,12 @@ const get_response_body = (response) => new Promise((resolve, reject) => {
         }
       }
     }
+
+    /**
+     * @type {import('./index').response_body}
+     */
+    const response_body = { json, string, buffer, compressed_buffer };
+
     resolve(response_body);
   });
 });

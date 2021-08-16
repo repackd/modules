@@ -39,6 +39,7 @@ export interface response_body {
   json: response_body_json;
   string: string;
   buffer: Buffer;
+  compressed_buffer: Buffer;
 }
 
 

@@ -1,15 +1,14 @@
 {
-  "name": "@joshxyzhimself/undici2",
+  "name": "@joshxyzhimself/telegram",
   "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/joshxyzhimself/modules",
   "license": "MIT",
   "dependencies": {
     "@joshxyzhimself/assert": "^0.0.1",
-    "multi-part": "^3.0.0",
-    "undici": "^4.4.2"
+    "@joshxyzhimself/undici2": "^0.0.1"
   },
   "devDependencies": {
-    "@joshxyzhimself/uwu": "^0.0.1"
+    "@joshxyzhimself/fs2": "^0.0.1"
   }
 }
