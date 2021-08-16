@@ -1,16 +1,16 @@
 {
   "name": "@joshxyzhimself/uwu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": "https://github.com/joshxyzhimself/modules",
   "license": "MIT",
   "dependencies": {
-    "@joshxyzhimself/assert": "^0.0.1",
-    "@joshxyzhimself/emitter": "^0.0.1",
-    "@joshxyzhimself/severity": "^0.0.1",
+    "@joshxyzhimself/assert": "^0.0.2",
+    "@joshxyzhimself/emitter": "^0.0.2",
+    "@joshxyzhimself/severity": "^0.0.2",
     "uWebSockets.js": "uNetworking/uWebSockets.js#v19.3.0"
   },
   "devDependencies": {
-    "@joshxyzhimself/undici2": "^0.0.1"
+    "@joshxyzhimself/undici2": "^0.0.2"
   }
 }

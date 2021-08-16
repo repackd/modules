@@ -1,10 +1,10 @@
 {
   "name": "@joshxyzhimself/fs2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": "https://github.com/joshxyzhimself/modules",
   "license": "MIT",
   "dependencies": {
-    "@joshxyzhimself/assert": "^0.0.1"
+    "@joshxyzhimself/assert": "^0.0.2"
   }
 }
