@@ -1,15 +1,15 @@
 {
   "name": "@joshxyzhimself/telegram",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "repository": "https://github.com/joshxyzhimself/modules",
   "license": "MIT",
   "dependencies": {
-    "@joshxyzhimself/assert": "^0.0.3",
-    "@joshxyzhimself/undici2": "^0.0.3"
+    "@joshxyzhimself/assert": "^0.0.4",
+    "@joshxyzhimself/undici2": "^0.0.4"
   },
   "devDependencies": {
-    "@joshxyzhimself/fs2": "^0.0.3"
+    "@joshxyzhimself/fs2": "^0.0.4"
   },
   "gitHead": "4bf6bde6521b00a9f7559923700ab8eb2f01b356"
 }
