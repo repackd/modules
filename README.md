@@ -4,6 +4,8 @@
 
 - https://github.com/lerna/lerna/
 
+#### usage
+
 ```sh
 # Creating a new package
 mkdir ./packages/new-package
@@ -13,18 +15,6 @@ yarn add mime-types
 cd ../../
 npx lerna add @joshxyzhimself/existing-package --scope=new-package
 npx lerna bootstrap
-
-
-# "Authentication error. Use `npm whoami` to troubleshoot."
-npm adduser
-
-
-# "You must sign up for private packages"
-npm config set access public
-
-
-# "Current HEAD is already released, skipping change detection."
-npx lerna publish from-package
 
 
 # publish
@@ -37,4 +27,19 @@ npx lerna publish
 --- .npmrc
 //npm.pkg.github.com/:_authToken=TOKEN
 --- EOF
+```
+
+#### usage with npm
+
+```
+# "Authentication error. Use `npm whoami` to troubleshoot."
+npm adduser
+
+
+# "You must sign up for private packages"
+npm config set access public
+
+
+# "Current HEAD is already released, skipping change detection."
+npx lerna publish from-package
 ```
