@@ -6,6 +6,7 @@ const { assert } = require('./index');
 try {
   assert(Math.random() === 0);
 } catch (e) {
-  console.error(e);
-  console.error(JSON.stringify(e, null, 2));
+  assert(e.name === 'AssertionError');
+  assert(e.code === 'ERR_ASSERTION_ERROR');
+  assert(e.message === 'Assertion error.');
 }

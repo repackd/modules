@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/joshxyzhimself/modules",
   "license": "MIT",
-  "gitHead": "4bf6bde6521b00a9f7559923700ab8eb2f01b356"
+  "gitHead": "4bf6bde6521b00a9f7559923700ab8eb2f01b356",
+  "scripts": {
+    "test": "node ./index.test.js"
+  }
 }

@@ -19,9 +19,19 @@ npx lerna add @joshxyzhimself/existing-package --scope=new-package
 npx lerna bootstrap
 ```
 
+#### testing packages
+
+```sh
+# bootstrap
+npx lerna bootstrap --no-ci
+
+# testing
+npx lerna run test
+```
+
 #### publishing packages (with gpr)
 
-```
+```sh
 # create a .npmrc
 # https://github.com/settings/tokens
 # https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
@@ -35,7 +45,7 @@ npx lerna publish
 
 #### consuming packages (with gpr)
 
-```
+```sh
 # create a .npmrc
 # https://github.com/settings/tokens
 # https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
@@ -50,7 +60,7 @@ yarn add @joshxyzhimself/assert
 
 #### publishing packages (with npm)
 
-```
+```sh
 # "Authentication error. Use `npm whoami` to troubleshoot."
 npm adduser
 
