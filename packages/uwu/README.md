@@ -1,0 +1,5 @@
+## @joshxyzhimself/uwu
+
+## license
+
+MIT

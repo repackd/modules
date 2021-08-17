@@ -1,0 +1,5 @@
+## @joshxyzhimself/severity
+
+## license
+
+MIT

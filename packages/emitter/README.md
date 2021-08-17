@@ -1,0 +1,5 @@
+## @joshxyzhimself/emitter
+
+## license
+
+MIT
