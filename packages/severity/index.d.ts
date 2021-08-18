@@ -33,7 +33,7 @@ export interface error {
   stack?: string;
 }
 export type extract_error = (error: Error & error) => error;
-
+export const extract_error: extract_error;
 
 export interface severity {
   types: types;
