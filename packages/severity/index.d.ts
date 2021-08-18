@@ -1,4 +1,4 @@
-export interface types {
+export interface severity_types {
   DEFAULT: string;
   DEBUG: string;
   INFO: string;
@@ -9,10 +9,10 @@ export interface types {
   ALERT: string;
   EMERGENCY: string;
 }
-export const types: types;
+export const severity_types: severity_types;
 
 
-export interface codes {
+export interface severity_codes {
   DEFAULT: number;
   DEBUG: number;
   INFO: number;
@@ -23,7 +23,7 @@ export interface codes {
   ALERT: number;
   EMERGENCY: number;
 }
-export const codes: codes;
+export const severity_codes: severity_codes;
 
 
 export interface error {
@@ -32,12 +32,5 @@ export interface error {
   message?: string;
   stack?: string;
 }
-export type extract_error = (error: Error & error) => error;
-export const extract_error: extract_error;
-
-export interface severity {
-  types: types;
-  codes: codes;
-  extract_error: extract_error;
-}
-export const severity: severity;
+export type parse_error = (error: Error & error) => error;
+const parse_error: parse_error;

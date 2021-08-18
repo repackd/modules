@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const mime_types = require('mime-types');
 const uws = require('uWebSockets.js');
 const { assert } = require('@joshxyzhimself/assert');
-const { severity } = require('@joshxyzhimself/severity');
+const { severity_types, parse_error } = require('@joshxyzhimself/severity');
 const { create_emitter } = require('@joshxyzhimself/emitter');
 
 
@@ -219,12 +219,12 @@ const internal_handler_2 = async (res, handler, response, request) => {
         response.ended = true;
       }
     }
-    events.emit(severity.types.ERROR, {
+    events.emit(severity_types.ERROR, {
       resource_id: 'uwu',
       operation_id: 'internal_handler',
       data: { request, response },
       timestamp: Date.now(),
-      error: severity.extract_error(e),
+      error: parse_error(e),
     });
   }
 };
@@ -312,12 +312,12 @@ const serve_handler = (handler) => {
             request.json = JSON.parse(buffer_string);
           } catch (e) {
             request.error = e;
-            events.emit(severity.types.ERROR, {
+            events.emit(severity_types.ERROR, {
               resource_id: 'uwu',
               operation_id: 'internal_handler',
               data: { request, response },
               timestamp: Date.now(),
-              error: severity.extract_error(e),
+              error: parse_error(e),
             });
           }
         }

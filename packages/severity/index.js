@@ -18,9 +18,9 @@ const { assert } = require('@joshxyzhimself/assert');
 
 
 /**
- * @type {import('./index').types}
+ * @type {import('./index').severity_types}
  */
-const types = {
+const severity_types = {
   DEFAULT: 'DEFAULT',
   DEBUG: 'DEBUG',
   INFO: 'INFO',
@@ -34,9 +34,9 @@ const types = {
 
 
 /**
- * @type {import('./index').codes}
+ * @type {import('./index').severity_codes}
  */
-const codes = {
+const severity_codes = {
   DEFAULT: 0,
   DEBUG: 100,
   INFO: 200,
@@ -50,9 +50,9 @@ const codes = {
 
 
 /**
- * @type {import('./index').extract_error}
+ * @type {import('./index').parse_error}
  */
-const extract_error = (e) => {
+const parse_error = (e) => {
   assert(e instanceof Error);
   assert(typeof e.name === 'string');
   assert(e.code === undefined || typeof e.code === 'string');
@@ -71,7 +71,8 @@ const extract_error = (e) => {
 };
 
 
-const severity = { types, codes, extract_error };
-
-
-module.exports = { severity };
+module.exports = {
+  severity_types,
+  severity_codes,
+  parse_error,
+};
