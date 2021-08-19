@@ -15,7 +15,7 @@ cd ./packages/new-package
 yarn init
 yarn add mime-types
 cd ../../
-npx lerna add @joshxyzhimself/existing-package --scope=new-package
+npx lerna add @joshxyzhimself/existing-package --scope=@joshxyzhimself/new-package --dev --peer
 npx lerna bootstrap
 ```
 
@@ -25,6 +25,7 @@ npx lerna bootstrap
 # bootstrap
 npx lerna bootstrap --no-ci
 
+
 # testing
 npx lerna run test
 ```
@@ -32,29 +33,36 @@ npx lerna run test
 #### publishing packages (with gpr)
 
 ```sh
-# create a .npmrc
+# create your GitHub Personal Access Token
 # https://github.com/settings/tokens
-# https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
---- .npmrc
-//npm.pkg.github.com/:_authToken=TOKEN
---- EOF
+
+
+# login with npm cli
+# username: YOUR_GITHUB_USERNAME
+# password: YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
+# email: YOUR_EMAIL
+npm login --scope=@joshxyzhimself --registry=https://npm.pkg.github.com
+
+
+# create a .npmrc
+# --- .npmrc
+# //npm.pkg.github.com/:_authToken=YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
+# @joshxyzhimself:registry=https://npm.pkg.github.com
+# --- EOF
+
 
 # publish
 npx lerna publish
+
+
+# "Current HEAD is already released, skipping change detection."
+npx lerna publish from-package
 ```
 
 #### consuming packages (with gpr)
 
 ```sh
-# create a .npmrc
-# https://github.com/settings/tokens
-# https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
---- .npmrc
-//npm.pkg.github.com/:_authToken=TOKEN
-@joshxyzhimself:registry=https://npm.pkg.github.com
---- EOF
-
-# proceed
+# add
 yarn add @joshxyzhimself/assert
 ```
 
@@ -67,10 +75,6 @@ npm adduser
 
 # "You must sign up for private packages"
 npm config set access public
-
-
-# "Current HEAD is already released, skipping change detection."
-npx lerna publish from-package
 ```
 
 ### license
