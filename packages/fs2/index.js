@@ -61,13 +61,10 @@ const pfcwd = (...paths) => path.join(cwd, ...paths);
 const pj = (...paths) => path.join(...paths);
 
 
-const json = {
+module.exports = {
   read_json,
   write_json,
   cwd,
   pfcwd,
   pj,
 };
-
-
-module.exports = json;
