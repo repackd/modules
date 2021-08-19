@@ -62,6 +62,12 @@ npx lerna publish from-package
 #### consuming packages (with gpr)
 
 ```sh
+# create a .npmrc
+# --- .npmrc
+# @joshxyzhimself:registry=https://npm.pkg.github.com
+# --- EOF
+
+
 # add
 yarn add @joshxyzhimself/assert
 ```
