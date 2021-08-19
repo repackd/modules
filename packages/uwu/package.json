@@ -8,6 +8,7 @@
     "@joshxyzhimself/assert": "^0.0.8",
     "@joshxyzhimself/emitter": "^0.0.8",
     "@joshxyzhimself/severity": "^0.0.8",
+    "mime-types": "^2.1.32",
     "uWebSockets.js": "uNetworking/uWebSockets.js#v19.3.0"
   },
   "devDependencies": {
