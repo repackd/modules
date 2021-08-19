@@ -1,11 +1,11 @@
 {
   "name": "@joshxyzhimself/hooks",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "index.js",
   "repository": "https://github.com/joshxyzhimself/modules",
   "license": "MIT",
   "dependencies": {
-    "@joshxyzhimself/assert": "^0.0.8"
+    "@joshxyzhimself/assert": "^0.0.9"
   },
   "peerDependencies": {
     "react": "^17.0.2"
