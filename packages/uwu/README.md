@@ -1,5 +1,11 @@
 ## @joshxyzhimself/uwu
 
+### usage
+
+```js
+// todo
+```
+
 ### license
 
 ```

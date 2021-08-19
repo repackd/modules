@@ -1,5 +1,11 @@
 ## @joshxyzhimself/assert
 
+### usage
+
+```js
+// todo
+```
+
 ### license
 
 ```

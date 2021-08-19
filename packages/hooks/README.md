@@ -1,4 +1,4 @@
-## @joshxyzhimself/emitter
+## @joshxyzhimself/hooks
 
 ### usage
 

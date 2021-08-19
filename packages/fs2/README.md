@@ -1,5 +1,11 @@
 ## @joshxyzhimself/fs2
 
+### usage
+
+```js
+// todo
+```
+
 ### license
 
 ```

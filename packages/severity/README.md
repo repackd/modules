@@ -1,5 +1,11 @@
 ## @joshxyzhimself/severity
 
+### usage
+
+```js
+// todo
+```
+
 ### license
 
 ```
