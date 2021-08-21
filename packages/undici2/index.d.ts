@@ -30,13 +30,8 @@ export interface request_options {
 }
 
 
-export interface response_body_json {
-  [key: string]: any;
-}
-
-
 export interface response_body {
-  json: response_body_json;
+  json: any;
   string: string;
   buffer: Buffer;
   compressed_buffer: Buffer;
