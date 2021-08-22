@@ -1,5 +1,7 @@
 ## @joshxyzhimself/severity
 
+severity levels
+
 ### usage
 
 ```js

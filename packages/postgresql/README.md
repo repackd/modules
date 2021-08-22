@@ -1,6 +1,6 @@
-## @joshxyzhimself/hooks
+## @joshxyzhimself/postgresql
 
-react hooks
+postgresql client
 
 ### usage
 

@@ -1,5 +1,7 @@
 ## @joshxyzhimself/emitter
 
+event emitter
+
 ### usage
 
 ```js

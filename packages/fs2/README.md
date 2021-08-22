@@ -1,5 +1,7 @@
 ## @joshxyzhimself/fs2
 
+file system
+
 ### usage
 
 ```js

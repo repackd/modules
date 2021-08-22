@@ -1,5 +1,7 @@
 ## @joshxyzhimself/uwu
 
+http & websocket server
+
 ### usage
 
 ```js

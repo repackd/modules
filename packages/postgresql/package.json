@@ -1,0 +1,12 @@
+{
+  "name": "@joshxyzhimself/postgresql",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/joshxyzhimself/modules",
+  "license": "MIT",
+  "dependencies": {
+    "@joshxyzhimself/assert": "^0.0.10",
+    "luxon": "^2.0.2",
+    "postgres": "2.0.0-beta.6"
+  }
+}
