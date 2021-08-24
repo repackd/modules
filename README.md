@@ -83,6 +83,14 @@ npm adduser
 npm config set access public
 ```
 
+#### updating packages
+
+```sh
+npx lerna exec --concurrency 1 --no-bail "pwd && yarn"
+npx lerna exec --concurrency 1 --no-bail "pwd && yarn outdated"
+npx lerna exec --concurrency 1 --no-bail "pwd && yarn upgrade --latest"
+```
+
 ### license
 
 ```
