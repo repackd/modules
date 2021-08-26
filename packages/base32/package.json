@@ -1,0 +1,13 @@
+{
+  "name": "@joshxyzhimself/base32",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/joshxyzhimself/modules",
+  "license": "MIT",
+  "dependencies": {
+    "@joshxyzhimself/assert": "^0.0.11"
+  },
+  "scripts": {
+    "test": "node ./index.test.js"
+  }
+}
