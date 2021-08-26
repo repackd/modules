@@ -4,8 +4,8 @@
 const fs = require('fs');
 const path = require('path');
 const process = require('process');
-const { assert } = require('@joshxyzhimself/assert');
-const uwu = require('@joshxyzhimself/uwu');
+const { assert } = require('@repackd/assertion');
+const uwu = require('@repackd/uwu');
 const undici2 = require('./index');
 
 

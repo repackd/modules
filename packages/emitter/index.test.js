@@ -2,7 +2,7 @@
 // @ts-check
 
 const { create_emitter } = require('./index');
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 process.nextTick(async () => {
 

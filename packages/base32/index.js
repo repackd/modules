@@ -7,7 +7,7 @@
 // - https://github.com/LinusU/base32-decode
 
 
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';

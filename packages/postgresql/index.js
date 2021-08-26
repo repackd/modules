@@ -9,7 +9,7 @@ const process = require('process');
 const child_process = require('child_process');
 const postgres = require('postgres');
 const luxon = require('luxon');
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 
 /**

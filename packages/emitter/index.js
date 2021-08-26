@@ -1,7 +1,7 @@
 
 // @ts-check
 
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 /**
  * @type {import('./index').create_emitter}

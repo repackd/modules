@@ -3,9 +3,9 @@
 const os = require('os');
 const fs = require('fs');
 const worker_threads = require('worker_threads');
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 const uwu = require('./index');
-const undici2 = require('@joshxyzhimself/undici2');
+const undici2 = require('@repackd/undici2');
 
 const test_html = `
   <html>

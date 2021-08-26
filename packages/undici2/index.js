@@ -5,7 +5,7 @@ const zlib = require('zlib');
 const util = require('util');
 const undici = require('undici');
 const multipart = require('multi-part');
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 
 const async_brotli_decompress = util.promisify(zlib.brotliDecompress);

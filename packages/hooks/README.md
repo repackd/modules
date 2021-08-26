@@ -1,4 +1,4 @@
-## @joshxyzhimself/hooks
+## @repackd/hooks
 
 react hooks
 
@@ -13,7 +13,7 @@ react hooks
 ```
 MIT License
 
-Copyright (c) 2021 joshxyzhimself
+Copyright (c) 2021 repackd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

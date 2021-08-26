@@ -7,9 +7,9 @@ const zlib = require('zlib');
 const crypto = require('crypto');
 const mime_types = require('mime-types');
 const uws = require('uWebSockets.js');
-const { assert } = require('@joshxyzhimself/assert');
-const { severity_types, parse_error } = require('@joshxyzhimself/severity');
-const { create_emitter } = require('@joshxyzhimself/emitter');
+const { assert } = require('@repackd/assertion');
+const { severity_types, parse_error } = require('@repackd/severity');
+const { create_emitter } = require('@repackd/emitter');
 
 
 const events = create_emitter();

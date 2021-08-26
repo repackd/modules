@@ -1,11 +1,11 @@
 {
-  "name": "@joshxyzhimself/base32",
+  "name": "@repackd/base32",
   "version": "1.0.1",
   "main": "index.js",
-  "repository": "https://github.com/joshxyzhimself/modules",
+  "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@joshxyzhimself/assert": "^1.0.0"
+    "@repackd/assertion": "^1.0.0"
   },
   "scripts": {
     "test": "node ./index.test.js"

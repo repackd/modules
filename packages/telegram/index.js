@@ -4,8 +4,8 @@
 // https://core.telegram.org/bots/api#markdownv2-style
 
 
-const { assert } = require('@joshxyzhimself/assert');
-const undici2 = require('@joshxyzhimself/undici2');
+const { assert } = require('@repackd/assertion');
+const undici2 = require('@repackd/undici2');
 
 
 /**

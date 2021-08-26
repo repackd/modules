@@ -10,7 +10,7 @@
 // 20 bytes = 160 bits
 //
 
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 const base32 = require('./index');
 
 process.nextTick(async () => {

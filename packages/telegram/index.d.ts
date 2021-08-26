@@ -1,5 +1,5 @@
 
-import * as undici2 from '@joshxyzhimself/undici2';
+import * as undici2 from '@repackd/undici2';
 
 export type post_form = (url: string, body: any) => Promise<undici2.response>;
 export const post_form: post_form;

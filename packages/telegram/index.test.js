@@ -2,8 +2,8 @@
 // @ts-check
 
 const fs = require('fs');
-const { assert } = require('@joshxyzhimself/assert');
-const fs2 = require('@joshxyzhimself/fs2');
+const { assert } = require('@repackd/assertion');
+const fs2 = require('@repackd/fs2');
 const telegram = require('./index.js');
 
 

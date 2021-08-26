@@ -1,38 +1,89 @@
-## repackd/modules
+## modules
 
-The packages we use and abuse.
+### lerna
 
+#### links
 
-### Creating
+- https://github.com/lerna/lerna/
+
+#### creating packages
 
 ```sh
-# ~/Documents/modules/
-mkdir ./packages/new-pkg
-cd ./packages/new-pkg
-
-# ~/Documents/modules/packages/new-pkg
+# Creating a new package
+mkdir ./packages/new-package
+cd ./packages/new-package
 yarn init
-
-# ~/Documents/modules/
-npx lerna add @repackd/assert --scope=@repackd/new-pkg
-npx lerna add @repackd/assert --scope=@repackd/new-pkg --dev
-npx lerna add @repackd/assert --scope=@repackd/new-pkg --dev --peer
+yarn add mime-types
+cd ../../
+npx lerna add @repackd/existing-package --scope=@repackd/new-package --dev --peer
 npx lerna bootstrap
 ```
 
-
-### Testing
+#### testing packages
 
 ```sh
-# bootstrap with --no-ci
+# bootstrap
 npx lerna bootstrap --no-ci
+
 
 # testing
 npx lerna run test
 ```
 
+#### publishing packages (with gpr)
 
-#### Updating
+```sh
+# create your GitHub Personal Access Token
+# https://github.com/settings/tokens
+
+
+# login with npm cli
+# username: YOUR_GITHUB_USERNAME
+# password: YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
+# email: YOUR_EMAIL
+npm login --scope=@repackd --registry=https://npm.pkg.github.com
+
+
+# create a .npmrc
+# --- .npmrc
+# //npm.pkg.github.com/:_authToken=YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
+# @repackd:registry=https://npm.pkg.github.com
+# --- EOF
+
+
+# publish
+npx lerna publish
+
+
+# "Current HEAD is already released, skipping change detection."
+npx lerna publish from-package
+```
+
+#### consuming packages (with gpr)
+
+```sh
+# create a .npmrc
+# --- .npmrc
+# @repackd:registry=https://npm.pkg.github.com
+# --- EOF
+
+
+# add
+yarn add @repackd/assertion
+```
+
+#### publishing packages (with npm)
+
+```sh
+# "Authentication error. Use `npm whoami` to troubleshoot."
+npm adduser
+
+
+# "You must sign up for private packages"
+npm config set access public
+```
+
+#### updating packages
 
 ```sh
 npx lerna exec --concurrency 1 --no-bail "pwd && yarn"
@@ -40,35 +91,7 @@ npx lerna exec --concurrency 1 --no-bail "pwd && yarn outdated"
 npx lerna exec --concurrency 1 --no-bail "pwd && yarn upgrade --latest"
 ```
 
-
-### Publishing
-
-```sh
-npx lerna publish
-```
-
-
-#### Consuming
-
-```sh
-yarn add @repackd/assertion
-```
-
-
-#### Troubleshooting
-
-```sh
-# "Authentication error. Use `npm whoami` to troubleshoot."
-npm login
-
-# "You must sign up for private packages"
-npm config set access public
-
-# "Current HEAD is already released, skipping change detection."
-npx lerna publish from-package
-```
-
-### License
+### license
 
 ```
 MIT License

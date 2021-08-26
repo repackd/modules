@@ -2,7 +2,7 @@
 // @ts-check
 
 const { useState, useEffect, useCallback } = require('react');
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 /**
  * @type {import('./useHistory').useHistory}

@@ -14,7 +14,7 @@
 // https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logseverity
 
 
-const { assert } = require('@joshxyzhimself/assert');
+const { assert } = require('@repackd/assertion');
 
 
 /**
