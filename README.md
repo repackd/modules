@@ -32,7 +32,7 @@ npx lerna run test
 ```
 
 
-#### Updating
+### Updating
 
 ```sh
 npx lerna exec --concurrency 1 --no-bail "pwd && yarn"
@@ -48,14 +48,14 @@ npx lerna publish
 ```
 
 
-#### Consuming
+### Consuming
 
 ```sh
 yarn add @repackd/assertion
 ```
 
 
-#### Troubleshooting
+### Troubleshooting
 
 ```sh
 # "Authentication error. Use `npm whoami` to troubleshoot."
