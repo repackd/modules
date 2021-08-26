@@ -1,6 +1,6 @@
 ## @joshxyzhimself/base32
 
-event emitter
+base32 encode & decode
 
 ### usage
 
