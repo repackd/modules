@@ -7,7 +7,7 @@
   "dependencies": {
     "@repackd/assertion": "^1.0.2",
     "multi-part": "^3.0.0",
-    "undici": "^4.4.2"
+    "undici": "^4.5.1"
   },
   "devDependencies": {
     "@repackd/uwu": "^1.0.2"
