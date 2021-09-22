@@ -69,6 +69,7 @@ export interface headers {
   if_none_match: string;
   user_agent: string;
   cookie: string;
+  x_forwarded_proto: string;
 }
 
 

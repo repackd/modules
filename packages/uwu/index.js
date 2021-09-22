@@ -263,6 +263,7 @@ const serve_handler = (handler) => {
         if_none_match: req.getHeader('if-none-match'),
         user_agent: req.getHeader('user-agent'),
         cookie: req.getHeader('cookie'),
+        x_forwarded_proto: req.getHeader('x-forwarded-proto'),
       },
       ip_address: Buffer.from(res.getRemoteAddressAsText()).toString(),
       json: undefined,
