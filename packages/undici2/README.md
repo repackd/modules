@@ -5,7 +5,7 @@ http client
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

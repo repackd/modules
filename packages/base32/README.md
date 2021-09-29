@@ -5,7 +5,7 @@ base32 encode & decode
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

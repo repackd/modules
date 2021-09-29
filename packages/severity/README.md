@@ -5,7 +5,7 @@ severity levels
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

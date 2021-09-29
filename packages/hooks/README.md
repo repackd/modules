@@ -5,7 +5,7 @@ react hooks
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

@@ -5,7 +5,7 @@ assertion
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

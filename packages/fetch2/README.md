@@ -5,7 +5,7 @@ fetch wrapper
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

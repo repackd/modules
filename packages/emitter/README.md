@@ -5,7 +5,7 @@ event emitter
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

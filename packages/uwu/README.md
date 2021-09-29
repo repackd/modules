@@ -5,7 +5,7 @@ http & websocket server
 ### usage
 
 ```js
-// todo ...
+// ...
 ```
 
 ### license

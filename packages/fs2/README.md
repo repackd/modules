@@ -5,7 +5,7 @@ file system
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

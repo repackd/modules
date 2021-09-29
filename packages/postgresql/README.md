@@ -5,7 +5,7 @@ postgresql client
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license

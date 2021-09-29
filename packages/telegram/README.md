@@ -5,7 +5,7 @@ telegram bot api
 ### usage
 
 ```js
-// todo
+// ...
 ```
 
 ### license
