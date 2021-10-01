@@ -9,7 +9,7 @@
     "@repackd/emitter": "^2.0.0",
     "@repackd/severity": "^2.0.0",
     "mime-types": "^2.1.32",
-    "uWebSockets.js": "uNetworking/uWebSockets.js#v19.4.0"
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.0.0"
   },
   "devDependencies": {
     "@repackd/undici2": "^2.0.1"
