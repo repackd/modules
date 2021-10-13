@@ -360,7 +360,7 @@ const create_static_handler = (app, url_pathname, local_directory, response_over
   assert(url_pathname.substring(url_pathname.length - 1, url_pathname.length) === '/');
 
   assert(typeof local_directory === 'string');
-  assert(local_directory.substring(local_directory.length - 1, local_directory.length) === '/');
+  assert(local_directory.substring(local_directory.length - 1, local_directory.length) === path.sep);
   assert(fs.existsSync(local_directory) === true);
   assert(path.isAbsolute(local_directory) === true);
 
