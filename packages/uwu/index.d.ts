@@ -5,8 +5,8 @@ import { emitter } from '@repackd/emitter';
 export interface cache_control_types {
   no_store: string;
   no_cache: string;
-  private_cached: string;
-  public_cached: string;
+  private_cache: string;
+  public_cache: string;
 }
 
 
@@ -54,10 +54,22 @@ export interface response {
   gzip_buffer?: Buffer;
   gzip_buffer_hash?: string;
 
-  timestamp?: number;
   start?: number;
   end?: number;
   took?: number;
+}
+
+
+export interface cached_file { 
+  file_name: string;
+  file_content_type: string;
+  buffer: Buffer;
+  buffer_hash: string;
+  brotli_buffer: Buffer;
+  brotli_buffer_hash: string;
+  gzip_buffer: Buffer;
+  gzip_buffer_hash: string;
+  timestamp: number;
 }
 
 
@@ -88,25 +100,26 @@ export interface request {
   error?: Error;
 }
 
-export const events: emitter;
+
+export const emitter: emitter;
 
 
 export const cache_control_types: cache_control_types;
 
 
 export type handler = (response: response, request: request) => void;
-export type internal_handler_2 = (res: uws.HttpResponse, handler: handler, response: response, request: request) => void;
-export type internal_handler = (res: uws.HttpResponse, req: uws.HttpRequest) => void;
-export type serve_handler = (handler: handler) => internal_handler;
-export const serve_handler: serve_handler;
+export type core_handler = (res: uws.HttpResponse, handler: handler, response: response, request: request) => void;
+export type initial_handler = (res: uws.HttpResponse, req: uws.HttpRequest) => void;
+export type create_handler = (handler: handler) => initial_handler;
+export const create_handler: create_handler;
 
 
-export type serve_static = (app: uws.TemplatedApp, route_path: string, local_path: string, response_override: response) => void;
-export const serve_static: serve_static;
+export type create_static_handler = (app: uws.TemplatedApp, url_pathname: string, local_directory: string, response_override: response) => void;
+export const create_static_handler: create_static_handler;
 
 
-export type serve_redirect = (app: uws.TemplatedApp) => void;
-export const serve_redirect: serve_redirect;
+export type create_tls_redirect = (app: uws.TemplatedApp) => void;
+export const create_tls_redirect: create_tls_redirect;
 
 
 export const port_access_types: port_access_types;

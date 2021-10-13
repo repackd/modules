@@ -53,11 +53,11 @@ process.nextTick(async () => {
   const app = uwu.uws.App({});
 
 
-  app.post('/test-json', uwu.serve_handler(async (response) => {
+  app.post('/test-json', uwu.create_handler(async (response) => {
     response.json = { foo: 'bar' };
   }));
 
-  app.get('/test-internal-error', uwu.serve_handler(async () => {
+  app.get('/test-internal-error', uwu.create_handler(async () => {
     throw new Error('Test error.');
   }));
 
