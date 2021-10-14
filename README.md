@@ -11,7 +11,7 @@ mkdir ./packages/new-pkg
 cd ./packages/new-pkg
 
 # ~/Documents/modules/packages/new-pkg
-yarn init
+npm init
 
 # ~/Documents/modules/
 npx lerna add @repackd/assert --scope=@repackd/new-pkg
@@ -35,9 +35,9 @@ npx lerna run test
 ### Updating
 
 ```sh
-npx lerna exec --concurrency 1 --no-bail "pwd && yarn"
-npx lerna exec --concurrency 1 --no-bail "pwd && yarn outdated"
-npx lerna exec --concurrency 1 --no-bail "pwd && yarn upgrade --latest"
+npx lerna exec --concurrency 1 --no-bail "pwd && npm install"
+npx lerna exec --concurrency 1 --no-bail "pwd && npm outdated"
+npx lerna exec --concurrency 1 --no-bail "pwd && npm update"
 ```
 
 

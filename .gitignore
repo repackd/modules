@@ -1,7 +1,7 @@
 /node_modules/
-packages/*/node_modules/
-packages/*/yarn-error.log
-packages/*/yarn.lock
-lerna-debug.log
-test.config.json
-.npmrc
+/packages/*/node_modules/
+/packages/*/yarn-error.log
+/packages/*/yarn.lock
+/lerna-debug.log
+/test.config.json
+/.npmrc
