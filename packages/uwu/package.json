@@ -1,18 +1,18 @@
 {
   "name": "@repackd/uwu",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
     "@repackd/assertion": "^2.0.0",
-    "@repackd/events2": "^2.0.0",
+    "@repackd/events2": "^2.3.0",
     "@repackd/severity": "^2.0.0",
     "mime-types": "^2.1.32",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.0.0"
   },
   "devDependencies": {
-    "@repackd/undici2": "^2.2.2"
+    "@repackd/undici2": "^2.3.0"
   },
   "gitHead": "4bf6bde6521b00a9f7559923700ab8eb2f01b356",
   "scripts": {
