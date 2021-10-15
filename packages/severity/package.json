@@ -1,11 +1,11 @@
 {
   "name": "@repackd/severity",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.3.4"
+    "@repackd/assertion": "^2.3.5"
   },
-  "gitHead": "bd70e4b96d83b2271630cfe65ff0bf8b113cb220"
+  "gitHead": "4ebeede6b20dfd625dc6caa9b798557e34df042b"
 }
