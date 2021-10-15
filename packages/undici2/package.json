@@ -1,16 +1,16 @@
 {
   "name": "@repackd/undici2",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.0.0",
+    "@repackd/assertion": "^2.3.1",
     "multi-part": "^3.0.0",
     "undici": "^4.7.0"
   },
   "devDependencies": {
-    "@repackd/uwu": "^2.3.0"
+    "@repackd/uwu": "^2.3.1"
   },
   "gitHead": "4bf6bde6521b00a9f7559923700ab8eb2f01b356"
 }

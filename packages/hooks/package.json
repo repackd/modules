@@ -1,11 +1,11 @@
 {
   "name": "@repackd/hooks",
-  "version": "2.0.0",
+  "version": "2.3.1",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.0.0"
+    "@repackd/assertion": "^2.3.1"
   },
   "peerDependencies": {
     "react": "^17.0.2"
