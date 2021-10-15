@@ -1,4 +1,4 @@
-## @repackd/emitter
+## @repackd/events2
 
 event emitter
 

@@ -4,5 +4,10 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap",
+    "test": "npx lerna run test",
+    "publish": "npx lerna publish"
   }
 }

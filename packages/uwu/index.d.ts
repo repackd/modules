@@ -1,5 +1,5 @@
 import * as uws from 'uWebSockets.js';
-import { emitter } from '@repackd/emitter';
+import { emitter } from '../events2';
 
 
 export interface cache_control_types {

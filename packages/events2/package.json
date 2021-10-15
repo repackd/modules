@@ -1,5 +1,5 @@
 {
-  "name": "@repackd/emitter",
+  "name": "@repackd/events2",
   "version": "2.0.0",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",

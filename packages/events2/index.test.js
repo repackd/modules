@@ -1,13 +1,13 @@
 
 // @ts-check
 
-const { create_emitter } = require('./index');
+const events2 = require('./index');
 const { assert } = require('@repackd/assertion');
 
 process.nextTick(async () => {
 
 
-  const emitter = create_emitter();
+  const emitter = events2.create_emitter();
 
 
   let listener_1_emitted = null;

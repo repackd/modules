@@ -9,10 +9,10 @@ const mime_types = require('mime-types');
 const uws = require('uWebSockets.js');
 const { assert } = require('@repackd/assertion');
 const { severity_types, parse_error } = require('@repackd/severity');
-const { create_emitter } = require('@repackd/emitter');
+const events2 = require('../events2');
 
 
-const emitter = create_emitter();
+const emitter = events2.create_emitter();
 
 
 /**
