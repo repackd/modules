@@ -1,11 +1,11 @@
 {
   "name": "@repackd/base32",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.3.5"
+    "@repackd/assertion": "^2.3.6"
   },
   "scripts": {
     "test": "node ./index.test.js"
