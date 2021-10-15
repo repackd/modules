@@ -2,60 +2,41 @@
 
 The packages we use and abuse.
 
-
-### Creating
+#### Creating
 
 ```sh
-# ~/Documents/modules/
-mkdir ./packages/new-pkg
-cd ./packages/new-pkg
-
-# ~/Documents/modules/packages/new-pkg
+mkdir ./packages/example
+cd ./packages/example
 npm init
-
-# ~/Documents/modules/
-npx lerna add @repackd/assert --scope=@repackd/new-pkg
-npx lerna add @repackd/assert --scope=@repackd/new-pkg --dev
-npx lerna add @repackd/assert --scope=@repackd/new-pkg --dev --peer
+npx lerna add @repackd/assert --scope=@repackd/example
+npx lerna add @repackd/assert --scope=@repackd/example --dev
+npx lerna add @repackd/assert --scope=@repackd/example --dev --peer
 npx lerna bootstrap
 ```
 
 
-### Testing
+#### Testing
 
 ```sh
-# bootstrap with --no-ci
-npx lerna bootstrap --no-ci
-
-# testing
+npx lerna bootstrap
 npx lerna run test
 ```
 
-
-### Updating
+#### Publishing
 
 ```sh
-npx lerna exec --concurrency 1 --no-bail "pwd && npm install"
-npx lerna exec --concurrency 1 --no-bail "pwd && npm outdated"
-npx lerna exec --concurrency 1 --no-bail "pwd && npm update"
+npx lerna publish --force-publish
 ```
 
 
-### Publishing
+#### Consuming
 
 ```sh
-npx lerna publish
+npm install @repackd/assertion
 ```
 
 
-### Consuming
-
-```sh
-yarn add @repackd/assertion
-```
-
-
-### Troubleshooting
+#### Troubleshooting
 
 ```sh
 # "Authentication error. Use `npm whoami` to troubleshoot."
@@ -68,7 +49,7 @@ npm config set access public
 npx lerna publish from-package
 ```
 
-### License
+#### License
 
 ```
 MIT License
