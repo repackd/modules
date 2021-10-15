@@ -8,6 +8,6 @@
   "scripts": {
     "bootstrap": "npx lerna bootstrap",
     "test": "npx lerna run test",
-    "publish": "npx lerna publish"
+    "publish": "npx lerna publish --force-publish"
   }
 }
