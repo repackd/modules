@@ -8,6 +8,36 @@ crypto utils
 // ...
 ```
 
+### references
+
+#### MDN SubtleCrypto
+
+- https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign
+- https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
+
+#### Web Cryptography API Examples
+
+- https://diafygi.github.io/webcrypto-examples/
+- https://gist.github.com/pedrouid/b4056fd1f754918ddae86b32cf7d803e#hmac
+
+#### HOTP: An HMAC-Based One-Time Password Algorithm
+
+- https://datatracker.ietf.org/doc/html/rfc4226
+
+#### TOTP: Time-Based One-Time Password Algorithm
+
+- https://datatracker.ietf.org/doc/html/rfc6238
+
+#### Uncategorized
+
+- https://uk.wikipedia.org/wiki/Google_Authenticator
+- https://en.wikipedia.org/wiki/Google_Authenticator
+- https://en.wikipedia.org/wiki/HMAC-based_one-time_password
+- https://en.wikipedia.org/wiki/Time-based_One-Time_Password
+- https://github.com/google/google-authenticator/wiki/Key-Uri-Format
+- https://thecleancoder.dev/post/gooauth/
+- https://gist.github.com/wingkeet/6bed16e5d3ab6975a3ab701d144aee0a
+
 ### license
 
 ```

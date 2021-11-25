@@ -8,6 +8,15 @@ base32 encode & decode
 // ...
 ```
 
+### references
+
+#### Uncategorized
+
+- https://datatracker.ietf.org/doc/html/rfc4648
+- https://www.rfcreader.com/#rfc4648
+- https://github.com/LinusU/base32-encode
+- https://github.com/LinusU/base32-decode
+
 ### license
 
 ```
