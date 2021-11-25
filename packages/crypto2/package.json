@@ -1,12 +1,12 @@
 {
   "name": "@repackd/crypto2",
-  "version": "0.0.0",
+  "version": "2.3.7",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.3.6",
-    "@repackd/base32": "^2.3.6"
+    "@repackd/assertion": "^2.3.7",
+    "@repackd/base32": "^2.3.7"
   },
   "scripts": {
     "test": "node ./index.test.js"
