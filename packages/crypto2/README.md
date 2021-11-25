@@ -1,57 +1,14 @@
-## repackd/modules
+## @repackd/crypto2
 
-The packages we use and abuse.
+crypto utils
 
-#### Creating
+### usage
 
-```sh
-mkdir ./packages/example
-cd ./packages/example
-npm init
-npx lerna add @repackd/assert --scope=@repackd/example
-npx lerna add @repackd/assert --scope=@repackd/example --dev
-npx lerna add @repackd/assert --scope=@repackd/example --dev --peer
-npx lerna bootstrap
+```js
+// ...
 ```
 
-
-#### Testing
-
-```sh
-npx lerna bootstrap
-npx lerna run test
-```
-
-
-#### Publishing
-
-```sh
-npx lerna publish --force-publish
-```
-
-
-#### Consuming
-
-```sh
-npm install @repackd/assertion
-```
-
-
-#### Troubleshooting
-
-```sh
-# "Authentication error. Use `npm whoami` to troubleshoot."
-npm login
-
-# "You must sign up for private packages"
-npm config set access public
-
-# "Current HEAD is already released, skipping change detection."
-npx lerna publish from-package
-```
-
-
-#### License
+### license
 
 ```
 MIT License
