@@ -82,6 +82,8 @@ export interface headers {
   user_agent: string;
   cookie: string;
   x_forwarded_proto: string;
+  x_forwarded_host: string;
+  x_forwarded_for: string;
 }
 
 

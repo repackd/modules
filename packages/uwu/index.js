@@ -276,6 +276,8 @@ const create_handler = (handler) => {
         user_agent: req.getHeader('user-agent'),
         cookie: req.getHeader('cookie'),
         x_forwarded_proto: req.getHeader('x-forwarded-proto'),
+        x_forwarded_host: req.getHeader('x-forwarded-host'),
+        x_forwarded_for: req.getHeader('x-forwarded-for'),
       },
       ip_address: Buffer.from(res.getRemoteAddressAsText()).toString(),
       json: null,
