@@ -6,8 +6,5 @@
   "dependencies": {
     "@repackd/assertion": "^2.4.0",
     "@repackd/base32": "^2.4.0"
-  },
-  "scripts": {
-    "test": "node ./index.test.js"
   }
 }
