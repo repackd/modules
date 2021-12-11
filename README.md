@@ -2,6 +2,7 @@
 
 The packages we use and abuse.
 
+
 #### Creating
 
 ```sh
@@ -11,6 +12,15 @@ npm init
 npx lerna add @repackd/assert --scope=@repackd/example
 npx lerna add @repackd/assert --scope=@repackd/example --dev
 npx lerna add @repackd/assert --scope=@repackd/example --dev --peer
+npx lerna bootstrap
+```
+
+
+#### Updating
+
+```sh
+npx lerna exec --no-bail "pwd && npm outdated"
+npx lerna exec --no-bail "pwd && npm update"
 npx lerna bootstrap
 ```
 
