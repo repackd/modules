@@ -1,11 +1,11 @@
 {
   "name": "@repackd/fetch2",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.6.0"
+    "@repackd/assertion": "^2.7.0"
   },
   "gitHead": "4ebeede6b20dfd625dc6caa9b798557e34df042b"
 }
