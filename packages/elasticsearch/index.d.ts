@@ -102,8 +102,8 @@ export interface esc {
 export type create_esc = (
   elasticsearch_host: string,
   elasticsearch_port: number,
-  elasticsearch_password: string,
   elasticsearch_username: string,
+  elasticsearch_password: string,
 ) => esc;
 
 

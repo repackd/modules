@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const process = require('process');
 const child_process = require('child_process');
-const postgres = require('postgres');
+const postgresql = require('postgres');
 const luxon = require('luxon');
 const { assert } = require('@repackd/assertion');
 
@@ -19,7 +19,7 @@ const { assert } = require('@repackd/assertion');
  * @param {string} postgres_password
  * @param {string} postgres_database
  */
-const create_client = (postgres_host, postgres_port, postgres_username, postgres_password, postgres_database) => {
+const create_pgc = (postgres_host, postgres_port, postgres_username, postgres_password, postgres_database) => {
   assert(typeof postgres_host === 'string');
   assert(typeof postgres_port === 'number');
   assert(typeof postgres_username === 'string');
@@ -44,7 +44,7 @@ const create_client = (postgres_host, postgres_port, postgres_username, postgres
   };
 
 
-  const client = postgres(postgres_config);
+  const client = postgresql(postgres_config);
   const escape = client;
   const encode_array = client.array;
   assert(escape instanceof Function);
@@ -209,6 +209,4 @@ const create_client = (postgres_host, postgres_port, postgres_username, postgres
 };
 
 
-const postgresql = { create_client };
-
-module.exports = postgresql;
+module.exports = { create_pgc };
