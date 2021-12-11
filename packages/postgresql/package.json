@@ -1,11 +1,11 @@
 {
   "name": "@repackd/postgresql",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.4.1",
+    "@repackd/assertion": "^2.5.0",
     "luxon": "^2.0.2",
     "postgres": "2.0.0-beta.10"
   },

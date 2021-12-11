@@ -1,10 +1,10 @@
 {
   "name": "@repackd/crypto2",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.4.1",
-    "@repackd/base32": "^2.4.1"
+    "@repackd/assertion": "^2.5.0",
+    "@repackd/base32": "^2.5.0"
   }
 }

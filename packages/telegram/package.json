@@ -1,15 +1,15 @@
 {
   "name": "@repackd/telegram",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
-    "@repackd/assertion": "^2.4.1",
-    "@repackd/undici2": "^2.4.1"
+    "@repackd/assertion": "^2.5.0",
+    "@repackd/undici2": "^2.5.0"
   },
   "devDependencies": {
-    "@repackd/fs2": "^2.4.1"
+    "@repackd/fs2": "^2.5.0"
   },
   "gitHead": "4ebeede6b20dfd625dc6caa9b798557e34df042b"
 }
