@@ -1,11 +1,10 @@
 
 // @ts-check
 
-const stream = require('stream');
+// - https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL
+
 const { assert } = require('@repackd/assertion');
 const s3 = require('@aws-sdk/client-s3');
-
-
 
 /**
  * @param {string} s3_region
@@ -14,6 +13,7 @@ const s3 = require('@aws-sdk/client-s3');
  * @param {string} s3_secret_key
  */
 const create_s3c = (s3_region, s3_hostname, s3_access_key, s3_secret_key) => {
+
 
   const client = new s3.S3Client({
     region: s3_region,
@@ -25,18 +25,20 @@ const create_s3c = (s3_region, s3_hostname, s3_access_key, s3_secret_key) => {
     tls: true,
   });
 
-  const list_buckets = async () => {
-    console.log('Listing buckets..');
+
+  const bucket_list = async () => {
+    console.log('bucket_list..');
     const response = await client.send(new s3.ListBucketsCommand({}));
     return response;
   };
 
+
   /**
    * @param {string} bucket
    */
-  const create_bucket = async (bucket) => {
+  const bucket_create = async (bucket) => {
     assert(typeof bucket === 'string');
-    console.log(`Creating bucket "${bucket}"..`);
+    console.log(`bucket_create "${bucket}"..`);
     const response = await client.send(new s3.CreateBucketCommand({
       Bucket: bucket,
       ACL: 'private',
@@ -44,14 +46,70 @@ const create_s3c = (s3_region, s3_hostname, s3_access_key, s3_secret_key) => {
     return response;
   };
 
+
   /**
    * @param {string} bucket
    */
-  const delete_bucket = async (bucket) => {
+  const bucket_delete = async (bucket) => {
     assert(typeof bucket === 'string');
-    console.log(`Creating bucket "${bucket}"..`);
+    console.log(`bucket_delete "${bucket}"..`);
     const response = await client.send(new s3.DeleteBucketCommand({
       Bucket: bucket,
+    }));
+    return response;
+  };
+
+
+  /**
+   * @param {string} bucket
+   */
+  const bucket_private_access = async (bucket) => {
+    assert(typeof bucket === 'string');
+    console.log(`bucket_private_access "${bucket}"..`);
+    const response = await client.send(new s3.PutBucketAclCommand({
+      Bucket: bucket,
+      ACL: 'private',
+    }));
+    return response;
+  };
+
+
+  /**
+   * @param {string} bucket
+   */
+  const bucket_public_read_access = async (bucket) => {
+    assert(typeof bucket === 'string');
+    console.log(`bucket_public_read_access "${bucket}"..`);
+    const response = await client.send(new s3.PutBucketAclCommand({
+      Bucket: bucket,
+      ACL: 'public-read',
+    }));
+    return response;
+  };
+
+
+  /**
+   * @param {string} bucket
+   * @param {string} file_name
+   */
+  const file_url = (bucket, file_name) => {
+    assert(typeof bucket === 'string');
+    assert(typeof file_name === 'string');
+    return `${s3_hostname}/${bucket}/${file_name}`;
+  };
+
+
+  /**
+   * @param {string} bucket
+   * @param {string} file_name
+   */
+  const file_head = async (bucket, file_name) => {
+    assert(typeof bucket === 'string');
+    assert(typeof file_name === 'string');
+    console.log(`file_head "${bucket}" "${file_name}"..`);
+    const response = await client.send(new s3.HeadObjectCommand({
+      Bucket: bucket,
+      Key: file_name,
     }));
     return response;
   };
@@ -61,11 +119,11 @@ const create_s3c = (s3_region, s3_hostname, s3_access_key, s3_secret_key) => {
    * @param {string} file_name
    * @param {Buffer} file_buffer
    */
-  const upload = async (bucket, file_name, file_buffer) => {
+  const file_upload = async (bucket, file_name, file_buffer) => {
     assert(typeof bucket === 'string');
     assert(typeof file_name === 'string');
     assert(file_buffer instanceof Buffer);
-    console.log(`Uploading ${bucket}:"${file_name}" (${file_buffer.length} bytes)..`);
+    console.log(`file_upload "${bucket}" "${file_name}" (${file_buffer.length} bytes)..`);
     const response = await client.send(new s3.PutObjectCommand({
       Bucket: bucket,
       Key: file_name,
@@ -79,16 +137,51 @@ const create_s3c = (s3_region, s3_hostname, s3_access_key, s3_secret_key) => {
    * @param {string} bucket
    * @param {string} file_name
    */
-  const download = async (bucket, file_name) => {
+  const file_download = async (bucket, file_name) => {
     assert(typeof bucket === 'string');
     assert(typeof file_name === 'string');
-    console.log(`Downloading ${bucket}:"${file_name}"..`);
+    console.log(`file_download "${bucket}" "${file_name}"..`);
     const response = await client.send(new s3.GetObjectCommand({
       Bucket: bucket,
       Key: file_name,
     }));
     return response;
   };
+
+
+  /**
+   * @param {string} bucket
+   * @param {string} file_name
+   */
+  const file_private_access = async (bucket, file_name) => {
+    assert(typeof bucket === 'string');
+    assert(typeof file_name === 'string');
+    console.log(`file_private_access "${bucket}" "${file_name}"..`);
+    const response = await client.send(new s3.PutObjectAclCommand({
+      Bucket: bucket,
+      Key: file_name,
+      ACL: 'private',
+    }));
+    return response;
+  };
+
+
+  /**
+   * @param {string} bucket
+   * @param {string} file_name
+   */
+  const file_public_read_access = async (bucket, file_name) => {
+    assert(typeof bucket === 'string');
+    assert(typeof file_name === 'string');
+    console.log(`file_public_read_access "${bucket}" "${file_name}"..`);
+    const response = await client.send(new s3.PutObjectAclCommand({
+      Bucket: bucket,
+      Key: file_name,
+      ACL: 'public-read',
+    }));
+    return response;
+  };
+
 
   /**
    * @param {any} readable
@@ -124,7 +217,20 @@ const create_s3c = (s3_region, s3_hostname, s3_access_key, s3_secret_key) => {
     }
   });
 
-  const s3c = { list_buckets, create_bucket, delete_bucket, upload, download, readable_to_buffer };
+  const s3c = {
+    bucket_list,
+    bucket_create,
+    bucket_delete,
+    bucket_private_access,
+    bucket_public_read_access,
+    file_url,
+    file_head,
+    file_upload,
+    file_download,
+    file_private_access,
+    file_public_read_access,
+    readable_to_buffer,
+  };
 
   return s3c;
 };
