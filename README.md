@@ -27,6 +27,15 @@ npx lerna bootstrap
 
 #### Testing
 
+```json
+{
+  "s3_region": "us-east-1",
+  "s3_hostname": "https://ewr1.vultrobjects.com",
+  "s3_access_key": "",
+  "s3_secret_key": ""
+}
+```
+
 ```sh
 npx lerna bootstrap
 npx lerna run test
