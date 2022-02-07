@@ -75,6 +75,7 @@ export interface cached_file {
 
 export interface headers {
   host: string;
+  origin: string;
   accept: string;
   accept_encoding: string;
   content_type: string;

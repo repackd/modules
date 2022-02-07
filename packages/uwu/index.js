@@ -269,6 +269,7 @@ const create_handler = (handler) => {
       method: req.getMethod(),
       headers: {
         host: req.getHeader('host'),
+        origin: req.getHeader('origin'),
         accept: req.getHeader('accept'),
         accept_encoding: req.getHeader('accept-encoding'),
         content_type: req.getHeader('content-type'),
