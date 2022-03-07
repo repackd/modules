@@ -92,7 +92,7 @@ export interface request_body_json {
   [key:string]: any;
 }
 
-export interface request_body_file {
+export interface request_body_part {
   name: string;
   data: ArrayBuffer;
   type?: string;
@@ -102,7 +102,7 @@ export interface request_body_file {
 export interface request_body {
   buffer: Buffer;
   json: request_body_json;
-  files: request_body_file[];
+  parts: request_body_part[];
 }
 
 export interface request {

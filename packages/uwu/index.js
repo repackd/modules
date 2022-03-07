@@ -283,8 +283,8 @@ const create_handler = (handler) => {
       ip_address: Buffer.from(res.getRemoteAddressAsText()).toString(),
       body: {
         buffer: null,
-        files: null,
         json: null,
+        parts: null,
       },
     };
 
@@ -334,7 +334,7 @@ const create_handler = (handler) => {
             request.body.json = JSON.parse(request.body.buffer.toString());
           }
           if (request.headers.content_type.includes('multipart/form-data') === true) {
-            request.body.files = uws.getParts(request.body.buffer, request.headers.content_type);
+            request.body.parts = uws.getParts(request.body.buffer, request.headers.content_type);
           }
         } catch (e) {
           request.error = e;
