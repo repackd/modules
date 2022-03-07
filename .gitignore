@@ -1,7 +1,6 @@
 /node_modules/
 /packages/*/node_modules/
 /packages/*/yarn.lock
-/packages/*/package-lock.json
 /lerna-debug.log
 /test.config.json
 /.npmrc
