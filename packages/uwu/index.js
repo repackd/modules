@@ -281,7 +281,11 @@ const create_handler = (handler) => {
         x_forwarded_for: req.getHeader('x-forwarded-for'),
       },
       ip_address: Buffer.from(res.getRemoteAddressAsText()).toString(),
-      json: null,
+      body: {
+        buffer: null,
+        files: null,
+        json: null,
+      },
     };
 
     /**
@@ -320,25 +324,27 @@ const create_handler = (handler) => {
       end: null,
       took: null,
     };
-    let buffer = Buffer.from([]);
+    request.body.buffer = Buffer.from([]);
     res.onData((chunk_arraybuffer, is_last) => {
       const chunk_buffer = Buffer.from(chunk_arraybuffer.slice(0));
-      buffer = Buffer.concat([buffer, chunk_buffer]);
+      request.body.buffer = Buffer.concat([request.body.buffer, chunk_buffer]);
       if (is_last === true) {
-        if (request.headers.content_type.includes('application/json') === true) {
-          const buffer_string = buffer.toString();
-          try {
-            request.json = JSON.parse(buffer_string);
-          } catch (e) {
-            request.error = e;
-            emitter.emit(severity_types.ERROR, {
-              resource_id: 'uwu',
-              operation_id: 'initial_handler',
-              data: { request, response },
-              timestamp: Date.now(),
-              error: parse_error(e),
-            });
+        try {
+          if (request.headers.content_type.includes('application/json') === true) {
+            request.body.json = JSON.parse(request.body.buffer.toString());
           }
+          if (request.headers.content_type.includes('multipart/form-data') === true) {
+            request.body.files = uws.getParts(request.body.buffer, request.headers.content_type);
+          }
+        } catch (e) {
+          request.error = e;
+          emitter.emit(severity_types.ERROR, {
+            resource_id: 'uwu',
+            operation_id: 'initial_handler',
+            data: { request, response },
+            timestamp: Date.now(),
+            error: parse_error(e),
+          });
         }
         process.nextTick(core_handler, res, handler, response, request);
       }

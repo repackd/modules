@@ -88,10 +88,22 @@ export interface headers {
 }
 
 
-export interface request_json {
+export interface request_body_json {
   [key:string]: any;
 }
 
+export interface request_body_file {
+  name: string;
+  data: ArrayBuffer;
+  type?: string;
+  filename?: string;
+}
+
+export interface request_body {
+  buffer: Buffer;
+  json: request_body_json;
+  files: request_body_file[];
+}
 
 export interface request {
   url: string;
@@ -99,7 +111,7 @@ export interface request {
   method: string;
   headers: headers;
   ip_address: string;
-  json: request_json;
+  body: request_body;
   error?: Error;
 }
 
