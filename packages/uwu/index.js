@@ -3,8 +3,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const zlib = require('zlib');
-const crypto = require('crypto');
 const mime_types = require('mime-types');
 const uws = require('uWebSockets.js');
 const { assert } = require('@repackd/assertion');
@@ -62,7 +60,6 @@ const core_handler = async (res, handler, response, request) => {
     assert(response.ended === false);
     assert(typeof response.file_cache === 'boolean');
     assert(typeof response.file_cache_max_age_ms === 'number');
-    assert(typeof response.compress === 'boolean');
     assert(typeof response.status === 'number');
     assert(response.headers instanceof Object);
     if (typeof response.file_path === 'string') {
@@ -88,11 +85,6 @@ const core_handler = async (res, handler, response, request) => {
             const file_name = path.basename(response.file_path);
             const file_content_type = mime_types.contentType(file_name) || null;
             const buffer = fs.readFileSync(response.file_path);
-            const buffer_hash = crypto.createHash('sha224').update(buffer).digest('hex');
-            const brotli_buffer = zlib.brotliCompressSync(buffer);
-            const brotli_buffer_hash = crypto.createHash('sha224').update(brotli_buffer).digest('hex');
-            const gzip_buffer = zlib.gzipSync(buffer);
-            const gzip_buffer_hash = crypto.createHash('sha224').update(gzip_buffer).digest('hex');
             const timestamp = Date.now();
 
             /**
@@ -102,11 +94,6 @@ const core_handler = async (res, handler, response, request) => {
               file_name,
               file_content_type,
               buffer,
-              buffer_hash,
-              brotli_buffer,
-              brotli_buffer_hash,
-              gzip_buffer,
-              gzip_buffer_hash,
               timestamp,
             };
 
@@ -116,20 +103,13 @@ const core_handler = async (res, handler, response, request) => {
           response.file_name = cached_file.file_name;
           response.file_content_type = cached_file.file_content_type;
           response.buffer = cached_file.buffer;
-          response.buffer_hash = cached_file.buffer_hash;
-          response.brotli_buffer = cached_file.brotli_buffer;
-          response.brotli_buffer_hash = cached_file.brotli_buffer_hash;
-          response.gzip_buffer = cached_file.gzip_buffer;
-          response.gzip_buffer_hash = cached_file.gzip_buffer_hash;
         } else {
           const file_name = path.basename(response.file_path);
           const file_content_type = mime_types.contentType(file_name) || null;
           const buffer = fs.readFileSync(response.file_path);
-          const buffer_hash = crypto.createHash('sha224').update(buffer).digest('hex');
           response.file_name = file_name;
           response.file_content_type = file_content_type;
           response.buffer = buffer;
-          response.buffer_hash = buffer_hash;
         }
         if (typeof response.file_content_type === 'string') {
           response.headers['Content-Type'] = response.file_content_type;
@@ -149,45 +129,6 @@ const core_handler = async (res, handler, response, request) => {
         response.headers['Content-Type'] = 'application/octet-stream';
       }
     }
-    if (response.buffer instanceof Buffer) {
-      if (response.buffer_hash === null) {
-        response.buffer_hash = crypto.createHash('sha224').update(response.buffer).digest('hex');
-      }
-      if (response.compress === true) {
-        if (request.headers.accept_encoding.includes('br') === true) {
-          if (response.brotli_buffer === null) {
-            response.brotli_buffer = zlib.brotliCompressSync(response.buffer);
-            response.brotli_buffer_hash = crypto.createHash('sha224').update(response.brotli_buffer).digest('hex');
-          }
-          response.headers['Content-Encoding'] = 'br';
-          response.compressed = true;
-        } else if (request.headers.accept_encoding.includes('gzip') === true) {
-          if (response.gzip_buffer === null) {
-            response.gzip_buffer = zlib.gzipSync(response.buffer);
-            response.gzip_buffer_hash = crypto.createHash('sha224').update(response.gzip_buffer).digest('hex');
-          }
-          response.headers['Content-Encoding'] = 'gzip';
-          response.compressed = true;
-        }
-      }
-      switch (response.headers['Content-Encoding']) {
-        case 'br': {
-          response.headers['ETag'] = response.brotli_buffer_hash;
-          break;
-        }
-        case 'gzip': {
-          response.headers['ETag'] = response.gzip_buffer_hash;
-          break;
-        }
-        default: {
-          response.headers['ETag'] = response.buffer_hash;
-          break;
-        }
-      }
-      if (request.headers.if_none_match === response.headers['ETag']) {
-        response.status = 304;
-      }
-    }
     if (typeof response.file_name === 'string' && response.file_dispose === true) {
       if (response.headers['Content-Disposition'] === undefined) {
         response.headers['Content-Disposition'] = `attachment; filename="${response.file_name}"`;
@@ -204,20 +145,7 @@ const core_handler = async (res, handler, response, request) => {
     if (response.status === 304 || response.buffer === null) {
       res.end();
     } else {
-      switch (response.headers['Content-Encoding']) {
-        case 'br': {
-          res.end(response.brotli_buffer);
-          break;
-        }
-        case 'gzip': {
-          res.end(response.gzip_buffer);
-          break;
-        }
-        default: {
-          res.end(response.buffer);
-          break;
-        }
-      }
+      res.end(response.buffer);
     }
     response.ended = true;
     response.end = Date.now();
@@ -273,7 +201,6 @@ const create_handler = (handler) => {
         accept: req.getHeader('accept'),
         accept_encoding: req.getHeader('accept-encoding'),
         content_type: req.getHeader('content-type'),
-        if_none_match: req.getHeader('if-none-match'),
         user_agent: req.getHeader('user-agent'),
         cookie: req.getHeader('cookie'),
         x_forwarded_proto: req.getHeader('x-forwarded-proto'),
@@ -311,14 +238,6 @@ const create_handler = (handler) => {
       html: null,
       json: null,
       buffer: null,
-      buffer_hash: null,
-
-      compress: false,
-      compressed: false,
-      brotli_buffer: null,
-      brotli_buffer_hash: null,
-      gzip_buffer: null,
-      gzip_buffer_hash: null,
 
       start: Date.now(),
       end: null,

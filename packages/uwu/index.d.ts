@@ -45,14 +45,6 @@ export interface response {
   html?: string;
   json?: response_json;
   buffer?: Buffer;
-  buffer_hash?: string;
-
-  compress?: boolean;
-  compressed?: boolean;
-  brotli_buffer?: Buffer;
-  brotli_buffer_hash?: string;
-  gzip_buffer?: Buffer;
-  gzip_buffer_hash?: string;
 
   start?: number;
   end?: number;
@@ -64,11 +56,6 @@ export interface cached_file {
   file_name: string;
   file_content_type: string;
   buffer: Buffer;
-  buffer_hash: string;
-  brotli_buffer: Buffer;
-  brotli_buffer_hash: string;
-  gzip_buffer: Buffer;
-  gzip_buffer_hash: string;
   timestamp: number;
 }
 
@@ -79,7 +66,6 @@ export interface headers {
   accept: string;
   accept_encoding: string;
   content_type: string;
-  if_none_match: string;
   user_agent: string;
   cookie: string;
   x_forwarded_proto: string;

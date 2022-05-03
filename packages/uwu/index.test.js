@@ -24,18 +24,12 @@ const test = async () => {
   const app = uwu.uws.App({});
 
 
-  uwu.create_static_handler(app, '/test-static/', path.join(__dirname, '/'), { file_cache: false, compress: false });
-  uwu.create_static_handler(app, '/test-compressed-static/', path.join(__dirname, '/'), { file_cache: false, compress: true });
-  uwu.create_static_handler(app, '/test-cached-static/', path.join(__dirname, '/'), { file_cache: true, compress: false });
-  uwu.create_static_handler(app, '/test-compressed-cached-static/', path.join(__dirname, '/'), { file_cache: true, compress: true });
+  uwu.create_static_handler(app, '/test-static/', path.join(__dirname, '/'), { file_cache: false });
+  uwu.create_static_handler(app, '/test-cached-static/', path.join(__dirname, '/'), { file_cache: true });
 
 
   app.get('/test-html', uwu.create_handler(async (response) => {
     response.html = test_html;
-  }));
-  app.get('/test-compressed-html', uwu.create_handler(async (response) => {
-    response.html = test_html;
-    response.compress = true;
   }));
   app.get('/test-headers', uwu.create_handler(async (response, request) => {
     response.json = request;
@@ -55,77 +49,52 @@ const test = async () => {
   assert(response.status === 200);
   assert(response.headers['content-encoding'] === undefined);
   assert(response.body.string === test_html);
+  console.log('response OK');
 
 
   const response2 = await undici2.request({
     method: 'GET',
-    url: `${origin}/test-compressed-html`,
-    headers: { 'accept-encoding': 'br' },
+    url: `${origin}/test-static/index.test.js`,
   });
   assert(response2.status === 200);
-  assert(response2.headers['content-encoding'] === 'br');
-  assert(response2.body.string === test_html);
+  assert(response2.headers['content-encoding'] === undefined);
+  assert(response2.body.string === test_file);
+  console.log('response2 OK');
 
 
   const response3 = await undici2.request({
     method: 'GET',
-    url: `${origin}/test-static/index.test.js`,
+    url: `${origin}/test-cached-static/index.test.js`,
   });
   assert(response3.status === 200);
   assert(response3.headers['content-encoding'] === undefined);
   assert(response3.body.string === test_file);
+  console.log('response3 OK');
 
 
   const response4 = await undici2.request({
     method: 'GET',
-    url: `${origin}/test-compressed-static/index.test.js`,
-    headers: { 'accept-encoding': 'br' },
+    url: `${origin}/test-headers`,
   });
   assert(response4.status === 200);
-  assert(response4.headers['content-encoding'] === 'br');
-  assert(response4.body.string === test_file);
+  assert(response4.body.json instanceof Object);
+  assert(response4.body.json.method === 'get');
+  assert(response4.body.json.headers instanceof Object);
+  assert(response4.body.json.headers.host === 'localhost:8080');
+  console.log('response4 OK');
 
 
   const response5 = await undici2.request({
-    method: 'GET',
-    url: `${origin}/test-cached-static/index.test.js`,
-  });
-  assert(response5.status === 200);
-  assert(response5.headers['content-encoding'] === undefined);
-  assert(response5.body.string === test_file);
-
-
-  const response6 = await undici2.request({
-    method: 'GET',
-    url: `${origin}/test-compressed-cached-static/index.test.js`,
-    headers: { 'accept-encoding': 'br' },
-  });
-  assert(response6.status === 200);
-  assert(response6.headers['content-encoding'] === 'br');
-  assert(response6.body.string === test_file);
-
-
-  const response7 = await undici2.request({
-    method: 'GET',
-    url: `${origin}/test-headers`,
-  });
-  assert(response7.status === 200);
-  assert(response7.body.json instanceof Object);
-  assert(response7.body.json.method === 'get');
-  assert(response7.body.json.headers instanceof Object);
-  assert(response7.body.json.headers.host === 'localhost:8080');
-
-
-  const response8 = await undici2.request({
     method: 'POST',
     url: `${origin}/test-json-post`,
     json: { foo: 'bar' },
   });
-  assert(response8.status === 200);
-  assert(response8.body.json instanceof Object);
-  assert(response8.body.json.method === 'post');
-  assert(response8.body.json.json instanceof Object);
-  assert(response8.body.json.json.foo === 'bar');
+  assert(response5.status === 200);
+  assert(response5.body.json instanceof Object);
+  assert(response5.body.json.method === 'post');
+  assert(response5.body.json.body.json instanceof Object);
+  assert(response5.body.json.body.json.foo === 'bar');
+  console.log('response5 OK');
 
 
   uwu.uws.us_listen_socket_close(token);
