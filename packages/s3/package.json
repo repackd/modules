@@ -1,12 +1,12 @@
 {
   "name": "@repackd/s3",
-  "version": "2.9.0",
+  "version": "3.0.0",
   "main": "index.js",
   "repository": "https://github.com/repackd/modules",
   "license": "MIT",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.44.0",
-    "@repackd/assertion": "^2.9.0"
+    "@repackd/assertion": "^3.0.0"
   },
   "gitHead": "4ebeede6b20dfd625dc6caa9b798557e34df042b"
 }
